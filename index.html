@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christmas Scavenger Hunt</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            transition: background 0.5s ease;
+        }
+
+        .screen {
+            display: none;
+            width: 100%;
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.6s ease;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Harry Potter Theme */
+        .hp-bg {
+            background: linear-gradient(135deg, #2c1810 0%, #5a3825 50%, #8b4513 100%);
+        }
+
+        .hp-screen h1 {
+            font-family: 'Courier New', monospace;
+            color: #8b0000;
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hp-screen .subtitle {
+            text-align: center;
+            font-style: italic;
+            color: #5a3825;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .clue-box {
+            background: #f4e8d8;
+            border: 3px solid #8b4513;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .clue-text {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #2c1810;
+            text-align: center;
+        }
+
+        /* Banana Ball Theme */
+        .bb-bg {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #FF6B35 100%);
+        }
+
+        .bb-screen h1 {
+            font-family: 'Arial Black', sans-serif;
+            color: #FFD700;
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+            letter-spacing: 2px;
+        }
+
+        .bb-screen .clue-box {
+            background: #fff;
+            border: 4px solid #000;
+            transform: rotate(-1deg);
+        }
+
+        .bb-screen .clue-text {
+            color: #000;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* Stranger Things Theme */
+        .st-bg {
+            background: linear-gradient(135deg, #000000 0%, #1a0000 50%, #330000 100%);
+        }
+
+        .st-screen h1 {
+            font-family: 'Courier New', monospace;
+            color: #ff0000;
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #ff0000;
+            letter-spacing: 8px;
+        }
+
+        .st-screen .clue-box {
+            background: #1a0000;
+            border: 2px solid #ff0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5), inset 0 0 20px rgba(255, 0, 0, 0.1);
+        }
+
+        .st-screen .clue-text {
+            color: #ffcccc;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 2px;
+        }
+
+        .next-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hp-screen .next-btn {
+            background: #8b0000;
+            color: #FFD700;
+            border: 2px solid #FFD700;
+        }
+
+        .hp-screen .next-btn:hover {
+            background: #a00000;
+            transform: scale(1.05);
+        }
+
+        .bb-screen .next-btn {
+            background: #FFD700;
+            color: #000;
+            border: 3px solid #000;
+            font-family: 'Arial Black', sans-serif;
+        }
+
+        .bb-screen .next-btn:hover {
+            background: #FFA500;
+            transform: scale(1.05) rotate(-2deg);
+        }
+
+        .st-screen .next-btn {
+            background: #000;
+            color: #ff0000;
+            border: 2px solid #ff0000;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+        }
+
+        .st-screen .next-btn:hover {
+            background: #1a0000;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
+        }
+
+        .intro-text {
+            text-align: center;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #2c1810;
+        }
+
+        .bb-screen .intro-text {
+            color: #000;
+            font-weight: 600;
+        }
+
+        .st-screen .intro-text {
+            color: #ffcccc;
+            font-family: 'Courier New', monospace;
+        }
+
+        .final-message {
+            text-align: center;
+            font-size: 1.3em;
+            color: #ff0000;
+            text-shadow: 0 0 10px #ff0000;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="hp-bg">
+    <!-- Screen 1: Harry Potter -->
+    <div class="screen hp-screen active">
+        <h1>🎄 The Christmas Quest 🎄</h1>
+        <div class="subtitle">A Magical Journey Awaits</div>
+        
+        <div class="intro-text">
+            Dearest adventurer,<br><br>
+            Your Christmas gift awaits, but it won't come easy! Three magical locations hold your treasures. Each clue will guide you to the next enchanted destination.
+        </div>
+
+        <div class="clue-box">
+            <div class="clue-text">
+                <strong>⚡ FIRST CLUE ⚡</strong><br><br>
+                "Where parchments rest and quills do write,<br>
+                Where work is done from morn to night,<br>
+                A treasure waits in your special space,<br>
+                Seek your gift in your working place!"<br><br>
+                <em>✨ Head to your office! ✨</em>
+            </div>
+        </div>
+
+        <button class="next-btn" onclick="nextScreen(1)">I Found It! Next Clue →</button>
+    </div>
+
+    <!-- Screen 2: Banana Ball -->
+    <div class="screen bb-screen">
+        <h1>🍌 BANANA BALL! 🍌</h1>
+        
+        <div class="intro-text">
+            AMAZING! You found the first gift!<br>
+            Ready for something totally bananas?!
+        </div>
+
+        <div class="clue-box">
+            <div class="clue-text">
+                <strong>🎾 CLUE #2 🎾</strong><br><br>
+                BATTER UP!<br>
+                Where four paws play and tails wag free,<br>
+                Your furry friends hold the key!<br>
+                Sprint to where the puppers stay,<br>
+                Your next prize awaits—GO GO GO!<br><br>
+                <em>🐕 Race to the dog room! 🐕</em>
+            </div>
+        </div>
+
+        <button class="next-btn" onclick="nextScreen(2)">Got It! Final Clue →</button>
+    </div>
+
+    <!-- Screen 3: Stranger Things -->
+    <div class="screen st-screen">
+        <h1>STRANGER THINGS</h1>
+        
+        <div class="intro-text">
+            Two down, one to go...<br>
+            The Upside Down calls you home.
+        </div>
+
+        <div class="clue-box">
+            <div class="clue-text">
+                <strong>⚠️ FINAL TRANSMISSION ⚠️</strong><br><br>
+                The lights flicker... a message appears...<br><br>
+                "Not your realm, but mine you'll find,<br>
+                Where I toil and work and grind.<br>
+                The final gift, your quest's last key,<br>
+                Awaits in MY office—come find me!"<br><br>
+                <em>🔦 Head to my office! 🔦</em>
+            </div>
+        </div>
+
+        <button class="next-btn" onclick="nextScreen(3)">Final Location!</button>
+
+        <div class="final-message">
+            ✨ Merry Christmas, my love! ✨
+        </div>
+    </div>
+
+    <script>
+        let currentScreen = 1;
+
+        function nextScreen(screenNum) {
+            const screens = document.querySelectorAll('.screen');
+            screens[screenNum - 1].classList.remove('active');
+            
+            if (screenNum < 3) {
+                screens[screenNum].classList.add('active');
+                currentScreen = screenNum + 1;
+                
+                // Change background
+                const body = document.body;
+                body.className = '';
+                if (screenNum === 1) {
+                    body.classList.add('bb-bg');
+                } else if (screenNum === 2) {
+                    body.classList.add('st-bg');
+                }
+            } else {
+                // Stay on final screen
+                screens[2].classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
