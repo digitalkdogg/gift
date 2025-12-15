@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Christmas Scavenger Hunt</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:Georgia,serif;min-height:100vh;display:flex;justify-content:center;align-items:center;padding:20px;transition:background .5s ease;position:relative;overflow-x:hidden;overflow-y:scroll}
+        .snowflake{position:absolute;top:-10px;color:white;font-size:1em;user-select:none;z-index:1;pointer-events:none;animation:fall linear infinite}
+        @keyframes fall{to{transform:translateY(100vh)}}
+        .screen{display:none;width:100%;max-width:500px;background:rgba(255,255,255,.7);border-radius:20px;padding:40px 30px;box-shadow:0 20px 60px rgba(0,0,0,.3);animation:fadeIn .6s ease;position:relative;z-index:2}
+        .screen.active{display:block}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .hp-bg{background:linear-gradient(135deg,#2c1810 0%,#5a3825 50%,#8b4513 100%)}
+        .bb-bg{background:linear-gradient(135deg,#FFD700 0%,#FFA500 50%,#FF6B35 100%)}
+        .st-bg{background:linear-gradient(135deg,#000 0%,#1a0000 50%,#330000 100%)}
+        .subtitle{text-align:center;font-style:italic;color:#5a3825;margin-bottom:15px;font-size:1.05em}
+        .clue-box{background:#f4e8d8;border:3px solid #8b4513;padding:20px;margin:18px 0;border-radius:10px;box-shadow:inset 0 2px 4px rgba(0,0,0,.1)}
+        .clue-text{font-size:1.05em;line-height:1.6;color:#2c1810;text-align:center;white-space:pre-line}
+        .next-btn{display:block;width:100%;padding:15px;font-size:1.05em;font-weight:700;border:none;border-radius:10px;cursor:pointer;margin-top:20px;transition:all .25s ease;text-transform:uppercase;letter-spacing:1px}
+        .hp-screen .next-btn{background:#8b0000;color:#FFD700;border:2px solid #FFD700}
+        .bb-screen .next-btn{background:#FFD700;color:#000;border:3px solid #000;font-family:Arial Black, sans-serif}
+        .st-screen .next-btn{background:#000;color:#ff0000;border:2px solid #ff0000}
+        .intro-text{text-align:center;font-size:1.05em;line-height:1.6;margin-bottom:10px;color:#2c1810}
+        .question-box{margin-top:18px;text-align:center}
+        input.question-input{width:100%;padding:12px;border-radius:8px;border:2px solid #333;margin-top:10px;font-size:1em}
+        .error{color:#b00000;text-align:center;font-weight:700;margin-top:10px;min-height:1.2em}
+        .final-message{text-align:center;font-size:1.3em;color:#ff0000;text-shadow:0 0 10px #ff0000;margin-top:20px;font-weight:700}
+    </style>
+</head>
+<body class="hp-bg">
+    <!-- Screen 1: Question 1 -->
+    <div class="screen hp-screen active">
+        <h1 style="text-align:center">🎄 The Christmas Quest 🎄</h1>
+        <div class="subtitle">A Magical Journey Awaits</div>
+
+        <div class="intro-text">
+            Dearest adventurer,<br><br>
+            Your Christmas gift awaits. Answer the question to proceed to the next clue.
+        </div>
+
+        <div class="clue-box">
+            <div class="clue-text">
+<strong>⚡ FIRST CLUE ⚡</strong>
+
+"Where papers pile and pens take flight,
+Where you sit and work from morning to night.
+A place of tasks, of hustle and cheer,
+Your very first present is waiting right here.
+So follow the magic, no need to delay—
+Your office is where the gift starts your day!"
+            </div>
+        </div>
+
+        <div class="question-box">
+            <label><strong>Question 1:</strong> What color bag did I put this present in?</label>
+            <input id="q1" class="question-input" type="text" placeholder="Type the color (e.g. brown)..." autocomplete="off" />
+            <div id="err1" class="error"></div>
+        </div>
+
+        <button class="next-btn" onclick="validateQ1()">Submit Answer →</button>
+    </div>
+
+    <!-- Screen 2: Question 2 -->
+    <div class="screen bb-screen">
+        <h1 style="text-align:center">🍌 BANANA BALL! 🍌</h1>
+
+        <div class="intro-text">Amazing! You found the first gift. Solve this next question to continue.</div>
+
+        <div class="clue-box">
+            <div class="clue-text">
+<strong>⚾ CLUE #2 ⚾</strong>
+
+"The pups stand guard with tails that sway,
+They watch your treasures night and day.
+Four furry noses will help you find
+The next surprise I left behind!
+So head to the room where the doggos play—
+Your second gift is tucked away!"
+            </div>
+        </div>
+
+        <div class="question-box">
+            <label><strong>Question 2:</strong> What is the company of the candy I got you?</label>
+            <input id="q2" class="question-input" type="text" placeholder="Type the company name (e.g. banaroma)..." autocomplete="off" />
+            <div id="err2" class="error"></div>
+        </div>
+
+        <button class="next-btn" onclick="validateQ2()">Submit Answer →</button>
+    </div>
+
+    <!-- Screen 3: Final -->
+    <div class="screen st-screen">
+        <h1 style="text-align:center">STRANGER THINGS</h1>
+
+        <div class="intro-text">Two down, one to go... the final gift awaits.</div>
+
+        <div class="clue-box">
+            <div class="clue-text">
+<strong>⚠️ FINAL CLUE ⚠️</strong>
+
+"Lights flicker soft with a message for you,
+Whispering secrets and giving a clue.
+Not your realm, but mine instead—
+Where thoughts are typed and ideas are spread.
+Your final gift waits patiently there,
+In my office—if you dare!"
+            </div>
+        </div>
+
+        <div id="finalMsg" class="final-message">✨ Merry Christmas, my love! ✨</div>
+    </div>
+
+<script>
+    /* snowflakes */
+    function createSnowflake(){
+        const snow = document.createElement('div');
+        snow.className='snowflake';
+        snow.innerHTML='❄';
+        snow.style.left = Math.random()*100 + 'vw';
+        snow.style.animationDuration = (Math.random()*3+2) + 's';
+        snow.style.opacity = Math.random();
+        snow.style.fontSize = (Math.random()*10+10) + 'px';
+        document.body.appendChild(snow);
+        setTimeout(()=> snow.remove(),5000);
+    }
+    setInterval(createSnowflake,100);
+
+    function showScreen(fromClass, toClass, bodyClass){
+        const from = document.querySelector(fromClass);
+        const to = document.querySelector(toClass);
+        if(from) from.classList.remove('active');
+        if(to) to.classList.add('active');
+        document.body.className = bodyClass || '';
+    }
+
+    function validateQ1(){
+        const val = (document.getElementById('q1').value || '').trim().toLowerCase();
+        const err = document.getElementById('err1');
+        if(val === 'brown'){
+            err.textContent = '';
+            showScreen('.hp-screen','.bb-screen','bb-bg');
+            setTimeout(()=> document.getElementById('q2').focus(), 250);
+        } else {
+            err.textContent = 'Incorrect — try again ❤️';
+        }
+    }
+
+    function validateQ2(){
+        const val = (document.getElementById('q2').value || '').trim().toLowerCase();
+        const err = document.getElementById('err2');
+        if(val === 'banaroma'){
+            err.textContent = '';
+            showScreen('.bb-screen','.st-screen','st-bg');
+        } else {
+            err.textContent = 'Not quite — try again ❤️';
+        }
+    }
+
+    document.addEventListener('keydown', function(e){
+        if(e.key === 'Enter'){
+            if(document.querySelector('.hp-screen').classList.contains('active')){
+                validateQ1();
+            } else if(document.querySelector('.bb-screen').classList.contains('active')){
+                validateQ2();
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
