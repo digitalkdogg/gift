@@ -25,7 +25,7 @@
         .intro-text{text-align:center;font-size:1.05em;line-height:1.6;margin-bottom:10px;color:#2c1810}
         .question-box{margin-top:18px;text-align:center}
         input.question-input{width:100%;padding:12px;border-radius:8px;border:2px solid #333;margin-top:10px;font-size:1em}
-        .error{color:#b00000;text-align:center;font-weight:700;margin-top:10px;min-height:1.2em}
+        .error{color:#ff0000;text-align:center;font-weight:700;margin-top:10px;min-height:1.2em;font-size:1.1em}
         .final-message{text-align:center;font-size:1.3em;color:#ff0000;text-shadow:0 0 10px #ff0000;margin-top:20px;font-weight:700}
     </style>
 </head>
@@ -56,7 +56,7 @@ Your office is where the gift starts your day!"</em>
         <div class="question-box">
             <label style="font-family:'Cinzel',Georgia,serif;color:#f4e8d8"><strong style="color:#FFD700">Question the First:</strong> What color bag did I enchant this present within?</label>
             <input id="q1" class="question-input" type="text" placeholder="Speak the color (e.g. brown)..." autocomplete="off" style="background:#2c1810;color:#FFD700;border:2px solid #8B7355;font-family:Georgia,serif" />
-            <div id="err1" class="error" style="color:#ff6b6b;text-shadow:0 0 5px rgba(255,107,107,0.5)"></div>
+            <div id="err1" class="error"></div>
         </div>
 
         <button class="next-btn" onclick="validateQ1()" style="font-family:'Cinzel',Georgia,serif">Proceed to Next Challenge →</button>
@@ -84,7 +84,7 @@ Your second gift is tucked away!"</span>
         <div class="question-box">
             <label style="font-family:'Arial Black',sans-serif;color:#000;font-size:1.1em"><strong style="background:#FFD700;padding:5px 10px;border-radius:5px">Question 2:</strong> What is the company of the candy I got you?</label>
             <input id="q2" class="question-input" type="text" placeholder="Type the company name (e.g. banaroma)..." autocomplete="off" style="background:#fff;color:#000;border:4px solid #000;font-family:'Arial Black',sans-serif;font-weight:700;font-size:1.1em" />
-            <div id="err2" class="error" style="font-family:'Arial Black',sans-serif;color:#8B0000;font-size:1.2em"></div>
+            <div id="err2" class="error"></div>
         </div>
 
         <button class="next-btn" onclick="validateQ2()" style="font-family:'Arial Black',sans-serif;transform:rotate(1deg);box-shadow:5px 5px 0 #000">LET'S GO! →</button>
