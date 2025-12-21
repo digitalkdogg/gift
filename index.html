@@ -27,6 +27,18 @@
         input.question-input{width:100%;padding:12px;border-radius:8px;border:2px solid #333;margin-top:10px;font-size:1em}
         .error{color:#ff0000;text-align:center;font-weight:700;margin-top:10px;min-height:1.2em;font-size:1.1em}
         .final-message{text-align:center;font-size:1.3em;color:#ff0000;text-shadow:0 0 10px #ff0000;margin-top:20px;font-weight:700}
+        input::placeholder {font-size: 0.85em;opacity: 0.9; color:rgba(255, 215, 0, 0.85);}
+        input#q2::placeholder {color:rgba(21, 31, 122, 0.85);}
+        input::-webkit-input-placeholder {font-size: 0.85em;opacity: 0.55; color:rgba(255, 215, 0, 0.85);}
+        input::-moz-placeholder {font-size: 0.85em;opacity: 0.55; color:rgba(255, 215, 0, 0.85);}
+        input:-ms-input-placeholder {font-size: 0.85em;opacity: 0.55; color:rgba(255, 215, 0, 0.85);}
+        .clue-box {position: relative;overflow: hidden;border: 3px solid #8B7355;box-shadow:inset 0 0 30px rgba(0,0,0,0.5),0 0 30px rgba(255,215,0,0.3);}
+        .clue-box::before {content: "";position: absolute;inset: 0;background-size: cover;background-position: center;z-index: 0;}
+        .clue-box::after {content: "";position: absolute;inset: 0;background: rgba(0,0,0,0.55);z-index: 1;}
+        .clue-box .clue-text {position: relative;z-index: 2;}
+        .clue-box.hp-clue::before {background-image: url('hogwarts-harry-3840x2160-13694.webp');}
+        .clue-box.bb-clue::before {background-image: url('PartyAnimals-logo.webp');}
+        .clue-box.st-clue::before {background-image: url('stranger-things-bg.webp');}
     </style>
 </head>
 <body class="hp-bg">
@@ -36,11 +48,12 @@
         <div class="subtitle" style="color:#d4af37;font-family:'Cinzel',Georgia,serif">A Magical Journey Awaits You</div>
 
         <div class="intro-text" style="font-family:'Cinzel',Georgia,serif;color:#f4e8d8">
-            <em>Dearest adventurer,</em><br><br>
+            <em>Dearest Kaycee,</em><br><br>
             Your Christmas gift awaits, hidden by ancient magic. Answer the riddle wisely to proceed to the next enchanted clue.
         </div>
 
-        <div class="clue-box" style="background:#1a1410;border:3px solid #8B7355;box-shadow:0 0 20px rgba(255,215,0,0.3)">
+        <!---<div class="clue-box" style="background:#1a1410;border:3px solid #8B7355;box-shadow:0 0 20px rgba(255,215,0,0.3)"> -->
+            <div class="clue-box hp-clue">
             <div class="clue-text" style="color:#f4e8d8;font-family:'Cinzel',Georgia,serif">
 <strong style="color:#FFD700;font-size:1.2em">⚡ FIRST RIDDLE ⚡</strong>
 
@@ -66,10 +79,10 @@ Your office is where the gift starts your day!"</em>
     <div class="screen bb-screen">
         <h1 style="text-align:center;font-family:'Comic Sans MS','Arial Black',sans-serif;color:#000;text-shadow:3px 3px 0 #FFD700,-1px -1px 0 #FFD700,1px -1px 0 #FFD700,-1px 1px 0 #FFD700;font-size:2.5em;font-weight:900;transform:rotate(-2deg)">🍌 BANANA BALL! 🍌</h1>
 
-        <div class="intro-text" style="font-family:'Arial Black',sans-serif;color:#000;font-size:1.15em;font-weight:700">WOOHOO! You found the first gift! Let's GO BANANAS! 🎉</div>
+        <div class="intro-text" style="font-family:'Arial Black',sans-serif;color:#000;font-size:1.15em;font-weight:700">WOOHOO! Of course you found it—Kaycee always does!🎉</div>
 
-        <div class="clue-box" style="background:#FFD700;border:5px solid #000;box-shadow:8px 8px 0 #000;transform:rotate(-1deg)">
-            <div class="clue-text" style="color:#000;font-family:'Arial Black',sans-serif;font-weight:700">
+        <div class="clue-box bb-clue" >
+            <div class="clue-text" style="color:#fff;font-family:'Arial Black',sans-serif;font-weight:700">
 <strong style="font-size:1.4em;text-decoration:underline">⚾ CLUE #2 ⚾</strong>
 
 <span style="font-family:Arial,sans-serif;font-size:1.1em">"The pups stand guard with tails that sway,
@@ -83,7 +96,7 @@ Your second gift is tucked away!"</span>
 
         <div class="question-box">
             <label style="font-family:'Arial Black',sans-serif;color:#000;font-size:1.1em"><strong style="background:#FFD700;padding:5px 10px;border-radius:5px">Question 2:</strong> What is the company of the candy I got you (one word) ?</label>
-            <input id="q2" class="question-input" type="text" placeholder="Type the company name (enter one word)..." autocomplete="off" style="background:#fff;color:#000;border:4px solid #000;font-family:'Arial Black',sans-serif;font-weight:700;font-size:1.1em" />
+            <input id="q2" class="question-input" type="text" placeholder="Type the company name (enter one word)..." autocomplete="off" style="background:#fff;color:#000;border:4px solid #000;font-family:'Arial Black',sans-serif;font-weight:700;font-size:1.1em;" />
             <div id="err2" class="error"></div>
         </div>
 
@@ -96,7 +109,7 @@ Your second gift is tucked away!"</span>
 
         <div class="intro-text" style="font-family:'Courier New',monospace;color:#ff6666;font-size:1.1em;letter-spacing:2px;text-shadow:0 0 10px rgba(255,0,0,0.8)">Two down, one to go... the final gift awaits in the Upside Down.</div>
 
-        <div class="clue-box" style="background:rgba(20,0,0,0.9);border:2px solid #660000;box-shadow:0 0 20px rgba(255,0,0,0.3),inset 0 0 30px rgba(255,0,0,0.1)">
+        <div class="clue-box st-clue">
             <div class="clue-text" style="color:#ff9999;font-family:'Courier New',monospace;letter-spacing:1px">
 <strong style="color:#ff0000;font-size:1.3em;text-shadow:0 0 10px #ff0000">⚠️ FINAL TRANSMISSION ⚠️</strong>
 
@@ -109,9 +122,34 @@ In my office—if you dare!"</span>
             </div>
         </div>
 
-        <div id="finalMsg" class="final-message" style="font-family:'Courier New',monospace;animation:flicker 2s infinite;letter-spacing:3px">✨ MERRY CHRISTMAS, MY LOVE! ✨</div>
-        
-        <button class="next-btn" onclick="toggleUpsideDown()" style="font-family:'Courier New',monospace;margin-top:30px;letter-spacing:2px">ENTER THE UPSIDE DOWN ⚠️</button>
+<div id="finalMsg" class="final-message" style="display:none;font-family:'Courier New',monospace;letter-spacing:2px;line-height:1.6">
+    Kaycee,<br><br>
+    I love watching shows with you.<br>
+    From late-night binges to cozy couch marathons,<br>
+    every episode is better because it’s with you.<br><br>
+    Here’s to many, many more shows<br>
+    we get to watch together ❤️
+</div>
+    
+    <div class="question-box" style="margin-top:25px;text-align:center">
+        <label style="font-family:'Courier New',monospace;color:#ffcccc;letter-spacing:2px">
+            <strong>FINAL QUESTION:</strong><br>
+            Which character is the book I got you about?
+        </label>
+
+        <input id="q3" class="question-input" type="text"
+            placeholder="Type the character name..."
+            autocomplete="off"
+            style="background:#000;color:#ff0000;border:2px solid #ff0000;font-family:'Courier New',monospace;letter-spacing:2px;text-align:center;margin-top:15px" />
+
+        <div id="err3" class="error" style="color:#ff4444;font-family:'Courier New',monospace"></div>
+    </div>
+
+        <button class="next-btn"
+            onclick="validateQ3()"
+            style="font-family:'Courier New',monospace;margin-top:30px;letter-spacing:2px">
+            ENTER THE UPSIDE DOWN ⚠️
+        </button>
     </div>
 
     <style>
@@ -178,9 +216,32 @@ In my office—if you dare!"</span>
         }
     }
 
+    function validateQ3(){
+        const val = (document.getElementById('q3').value || '').trim().toLowerCase();
+        const err = document.getElementById('err3');
+
+        if(val === 'robin'){
+            err.textContent = '';
+            toggleUpsideDown();
+        } else {
+            err.textContent = 'The signal is weak… try again ❤️';
+        }
+    }
+
     function toggleUpsideDown(){
         const stScreen = document.querySelector('.st-screen');
+        const msg = document.getElementById('finalMsg');
+
+        // Flip the screen
         stScreen.classList.toggle('upside-down');
+
+        // Reveal secret message after the flip
+        setTimeout(() => {
+            msg.style.display = 'block';
+            msg.style.opacity = 0;
+            msg.style.transition = 'opacity 2s ease';
+            setTimeout(() => msg.style.opacity = 1, 100);
+        }, 1200);
     }
 
     document.addEventListener('keydown', function(e){
