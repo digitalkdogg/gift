@@ -54,8 +54,8 @@ Your office is where the gift starts your day!"</em>
         </div>
 
         <div class="question-box">
-            <label style="font-family:'Cinzel',Georgia,serif;color:#f4e8d8"><strong style="color:#FFD700">Question the First:</strong> What color bag did I enchant this present within?</label>
-            <input id="q1" class="question-input" type="text" placeholder="Speak the color (e.g. brown)..." autocomplete="off" style="background:#2c1810;color:#FFD700;border:2px solid #8B7355;font-family:Georgia,serif" />
+            <label style="font-family:'Cinzel',Georgia,serif;color:#f4e8d8"><strong style="color:#FFD700">Question the First:</strong> How many books are printed on the bag?</label>
+            <input id="q1" class="question-input" type="text" placeholder="Speak the color (e.g. pink)..." autocomplete="off" style="background:#2c1810;color:#FFD700;border:2px solid #8B7355;font-family:Georgia,serif" />
             <div id="err1" class="error"></div>
         </div>
 
@@ -74,7 +74,7 @@ Your office is where the gift starts your day!"</em>
 
 <span style="font-family:Arial,sans-serif;font-size:1.1em">"The pups stand guard with tails that sway,
 They watch your treasures night and day.
-Four furry noses will help you find
+3 furry noses will help you find
 The next surprise I left behind!
 So head to the room where the doggos play—
 Your second gift is tucked away!"</span>
@@ -82,7 +82,7 @@ Your second gift is tucked away!"</span>
         </div>
 
         <div class="question-box">
-            <label style="font-family:'Arial Black',sans-serif;color:#000;font-size:1.1em"><strong style="background:#FFD700;padding:5px 10px;border-radius:5px">Question 2:</strong> What is the company of the candy I got you?</label>
+            <label style="font-family:'Arial Black',sans-serif;color:#000;font-size:1.1em"><strong style="background:#FFD700;padding:5px 10px;border-radius:5px">Question 2:</strong> What is the company of the candy I got you (one word) ?</label>
             <input id="q2" class="question-input" type="text" placeholder="Type the company name (e.g. banaroma)..." autocomplete="off" style="background:#fff;color:#000;border:4px solid #000;font-family:'Arial Black',sans-serif;font-weight:700;font-size:1.1em" />
             <div id="err2" class="error"></div>
         </div>
@@ -158,7 +158,7 @@ In my office—if you dare!"</span>
     function validateQ1(){
         const val = (document.getElementById('q1').value || '').trim().toLowerCase();
         const err = document.getElementById('err1');
-        if(val === 'brown'){
+        if(parseInt(val) === parseInt(16)){
             err.textContent = '';
             showScreen('.hp-screen','.bb-screen','bb-bg');
             setTimeout(()=> document.getElementById('q2').focus(), 250);
@@ -170,7 +170,7 @@ In my office—if you dare!"</span>
     function validateQ2(){
         const val = (document.getElementById('q2').value || '').trim().toLowerCase();
         const err = document.getElementById('err2');
-        if(val === 'banaroma'){
+        if(val === 'fusion'){
             err.textContent = '';
             showScreen('.bb-screen','.st-screen','st-bg');
         } else {
